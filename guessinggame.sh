@@ -7,25 +7,26 @@ read response
 
 
 response=num
-
+file_count=$(ls -1 | wc -l)
+count=file_count
 function guess {
-  if [[ $num -ne 5 ]]
+  if [[ $num -ne $count ]]
   then
-    while [[ $num -ne 5 ]]
+    while [[ $num -ne $count ]]
     do
-      if [[ $num -gt 5 ]]
+      if [[ $num -gt $count ]]
       then
         echo "Your answer is incorrect. It is too high. Guess again:"
         read response
         let num=response
-      elif [[ $num -lt 5 ]]
+      elif [[ $num -lt $count ]]
       then
         echo "Your answer is incorrect. It is too low. Guess again:"
         read response
         let num=response
       fi
     done
-  else [[ $num -eq 5 ]]
+  else [[ $num -eq $count ]]
   fi
   echo "Congratulations. You guessed correctly!"
 }
